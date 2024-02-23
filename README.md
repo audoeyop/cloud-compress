@@ -5,8 +5,12 @@ Cloud Compress converts files into tiny versions of themselves by hashing binary
 
 <img src="assets/screenshot.jpg" height="300px">
 
-
+## File Compression
 Compression is achieved by hashing 2^16 or 65,536 byte binary chunks of files into 4 byte crc32 hashes. This produces a compression rate of 1/16,384. The compressed file is produced from the hashes of the binary chunks of the original file.
 
 <img src="assets/hash_table.jpg">
 
+## File Decompression
+This process can be reversed to decompress files. The compressed file is decompressed by looking up the file content for each hash value, then converting the hashed content to the original file's content.
+
+<img src="assets/hash_table2.jpg">
