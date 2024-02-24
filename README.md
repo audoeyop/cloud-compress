@@ -14,3 +14,10 @@ Compression is achieved by hashing 2^16 or 65,536 byte binary chunks of files in
 This process can be reversed to decompress files. The compressed file is decompressed by looking up the file content for each hash value, then converting the hashed content to the original file's content.
 
 <img src="assets/hash_table2.jpg">
+
+## Limitations
+
+Anybody is free to fork this repository and improve on Cloud Compress. Some limitations and potential improvements are:
+- The file size limit is 2.1 MB due to the PHP web server limitations.
+- Add a column to handle logistics for collisions in hash table.
+- Add encryption or a type of obfuscation so that individual binary chunks are not easily reversible in database.
