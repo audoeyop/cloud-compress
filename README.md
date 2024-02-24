@@ -18,7 +18,7 @@ hash_table_hash TEXT PRIMARY KEY,
 hash_table_val  TEXT
 );
 ```
-From the project repository run the following command, then navigate to https://localhost:8000 from a web browser.
+From the project repository run the following command, then navigate to http://localhost:8000 from a web browser.
 ```
 php -S localhost:8000
 ```
