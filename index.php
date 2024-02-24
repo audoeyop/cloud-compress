@@ -52,7 +52,7 @@ if(isset($_GET['online'])){
 
     // create session directory if it doesn't exist
     if (!file_exists($session_id)) {
-      mkdir($session_id, 0644, true);
+      mkdir($session_id, 0777, true);
     }
 
     // get uploaded tmp file
@@ -123,7 +123,7 @@ if(isset($_GET['online'])){
 
       // create session directory if it doesn't exist
       if (!file_exists($session_id)) {
-        mkdir($session_id, 0644, true);
+        mkdir($session_id, 0777, true);
       }
 
       // delete decompressed file if it exists in session directory
@@ -253,7 +253,7 @@ if(isset($_GET['online'])){
             </small>
             <br/>
             <form id="upload-form" method="post" enctype="multipart/form-data" action="">
-              <input class="form-control" type="file" name="file" style="width:400px;margin:auto" />
+              <input class="form-control" id="file" type="file" name="file" style="width:400px;margin:auto" />
               <br/>
               <div>
                 <small class="progress"></small>
@@ -399,30 +399,41 @@ if(isset($_GET['online'])){
       </script>
     <?php endif; ?>
     <script>
-      function get_random(val,random_max){
-        var num = Math.floor(Math.random() * (random_max+1));
-        if (Math.random() > 0.5 && num != 0)
-          num *= -1;
-        //console.log(num)
-        if ((val + num) >= 255) return 255;
-        else if ((val + num) <= 0) return 0;
-        else return (val + num);
-      }
+
+      var uploadField = document.getElementById("file");
+
+      uploadField.onchange = function() {
+          if(this.files[0].size > 2100000){
+            alert("The maximum file size is 2.1 MB");
+            this.value = "";
+          };
+      };
+      // function get_random(val,random_max){
+      //   var num = Math.floor(Math.random() * (random_max+1));
+      //   if (Math.random() > 0.5 && num != 0)
+      //     num *= -1;
+      //   //console.log(num)
+      //   if ((val + num) >= 255) return 255;
+      //   else if ((val + num) <= 0) return 0;
+      //   else return (val + num);
+      // }
       
-      var init_light_buffer = 120;
-      var r = init_light_buffer + Math.floor((Math.random() * (256 - init_light_buffer)));
-      var b = init_light_buffer + Math.floor((Math.random() * (256 - init_light_buffer)));
-      var g = init_light_buffer + Math.floor((Math.random() * (256 - init_light_buffer)));
+      // var init_light_buffer = 120;
+      // var r = init_light_buffer + Math.floor((Math.random() * (256 - init_light_buffer)));
+      // var b = init_light_buffer + Math.floor((Math.random() * (256 - init_light_buffer)));
+      // var g = init_light_buffer + Math.floor((Math.random() * (256 - init_light_buffer)));
       
-      var random_max = 1;
+      // var random_max = 1;
       
-      setInterval(function() {
-          r = get_random(r, random_max);
-          g = get_random(g, random_max);
-          b = get_random(b, random_max);
+      // setInterval(function() {
+      //     r = get_random(r, random_max);
+      //     g = get_random(g, random_max);
+      //     b = get_random(b, random_max);
           
-          $('#cloud').css('background-color','rgb(' + r + ',' + g + ',' + b + ')');
-      }, 1)
+      //     $('#cloud').css('background-color','rgb(' + r + ',' + g + ',' + b + ')');
+      // }, 1)
+
+
     </script>
   </body>
 </html>
