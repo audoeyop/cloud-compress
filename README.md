@@ -33,9 +33,9 @@ This process can be reversed to decompress files. The compressed file is decompr
 
 <img src="assets/hash_table2.jpg">
 
-## Limitations
+## Future Work
 
-Anybody is free to fork this repository and improve on Cloud Compress. Some limitations and potential improvements are:
-- The file size limit is 2.1 MB due to the PHP web server limitations.
-- Add a column to handle logistics for collisions in hash table.
-- Add encryption or a type of obfuscation so that individual binary chunks are not easily reversible in database.
+Anybody is free to fork this repository and improve on Cloud Compress. Feel free to submit a pull request if you would like to contribute. Some limitations and potential improvements are:
+- Due to limitations with PHP server file size limits, we only tested files up to 2MB in size. It is possible that larger files may not add significantly to the overhead as the amount of time to perform file conversions and database operations may not increase linearly.
+- It is possible that multiple combinations of file contents can lead to the same hash, which can cause collisions. Additional columns can be utilized to implement sanity checks to make sure that the file content that is selected in the case of a collision is for the appropriate file.
+- Individual hashes can be reversed, not easily, but possibly. Utilizing encryption can add data obfuscation so that individual binary chunks are not reversible in database.

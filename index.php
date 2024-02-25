@@ -43,6 +43,8 @@ $session_id = session_id();
 if(isset($_GET['online'])){
   if(isset($_GET['compress'])){
 
+    $curTime = microtime(true);
+
     // initialize datsbase
   	if(!strcmp($db_type,"sqlite"))
     	$db = new SQLite3('database.sqlite');
@@ -104,9 +106,14 @@ if(isset($_GET['online'])){
     // close file handlers
     fclose($handle);
     fclose($fp);
+
+    error_log(round(microtime(true) - $curTime,3)*1000);
+
     exit(0);
   }
   else if(isset($_GET['decompress'])){
+
+    $curTime = microtime(true);
 
  	  //initialize database
     if(!strcmp($db_type,"sqlite"))
@@ -164,6 +171,9 @@ if(isset($_GET['online'])){
     }
     fclose($handle);
     fclose($fp);
+
+    error_log(round(microtime(true) - $curTime,3)*1000);
+    
     exit(0);
   }
   
