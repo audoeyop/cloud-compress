@@ -1,7 +1,7 @@
 # Cloud Compress
 Cloud Compress converts files into tiny versions of themselves by hashing binary blobs of the files into hashes. With the hashes being much smaller than the binary blobs, we achieve levels of file compression that surpass most common compression algorithms by far. 
 
-[View Demo](https://akaninyene.com/projects/cloud-compress/)
+[View Demo](http://www.akaninyene.com:8000/)
 
 <img src="assets/screenshot.jpg" height="300px">
 
